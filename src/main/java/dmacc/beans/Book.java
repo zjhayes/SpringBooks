@@ -1,15 +1,23 @@
 package dmacc.beans;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book
 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String title;
 	private String author;
-	private int deweyDecimal;
-	private Date publicationDate;
-	private boolean isCheckedOut;
+	private float deweyDecimal;
+	private LocalDate publicationDate;
+	private boolean isCheckedOut = false;
 	
 	public Book() 
 	{
@@ -22,7 +30,7 @@ public class Book
 		this.title = title;
 	}
 	
-	public Book(String title, String author, int deweyDecimal, Date publicationDate, boolean isCheckedOut)
+	public Book(String title, String author, float deweyDecimal, LocalDate publicationDate, boolean isCheckedOut)
 	{
 		super();
 		this.title = title;
@@ -32,7 +40,7 @@ public class Book
 		this.isCheckedOut = isCheckedOut;
 	}
 	
-	public Book(long id, String title, String author, int deweyDecimal, Date publicationDate, boolean isCheckedOut)
+	public Book(long id, String title, String author, float deweyDecimal, LocalDate publicationDate, boolean isCheckedOut)
 	{
 		super();
 		this.id = id;
@@ -73,22 +81,22 @@ public class Book
 		this.author = author;
 	}
 
-	public int getDeweyDecimal()
+	public float getDeweyDecimal()
 	{
 		return deweyDecimal;
 	}
 
-	public void setDeweyDecimal(int deweyDecimal)
+	public void setDeweyDecimal(float deweyDecimal)
 	{
 		this.deweyDecimal = deweyDecimal;
 	}
 
-	public Date getPublicationDate()
+	public LocalDate getPublicationDate()
 	{
 		return publicationDate;
 	}
 
-	public void setPublicationDate(Date publicationDate)
+	public void setPublicationDate(LocalDate publicationDate)
 	{
 		this.publicationDate = publicationDate;
 	}
